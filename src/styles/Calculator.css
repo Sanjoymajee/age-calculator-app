@@ -1,0 +1,215 @@
+/* import poppins for all format with extra bold italic*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900");
+#root {
+  padding: 0;
+}
+body {
+  margin: 0;
+  background-color: hsl(0, 0%, 94%);
+  font-family: "Poppins", sans-serif;
+}
+
+p {
+  margin: 0;
+}
+
+.__error {
+  margin-top: 5px;
+  font-size: 12px;
+  color: hsl(0, 100%, 67%);
+}
+
+.error {
+  border: 1px solid hsl(0, 100%, 67%);
+}
+
+.calculator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+/* ****************************/
+/*    __input     *           */
+/* ****************  __button */
+/*    __output    *           */
+/* ****************************/
+
+.__card {
+  display: grid;
+  grid-template-areas:
+    "input button"
+    "output button";
+  background-color: hsl(0, 0%, 100%);
+  box-shadow: 0 10px 30px hsla(0, 0%, 0%, 0.2);
+  padding: 30px;
+  border-radius: 20px 20px 30% 20px;
+}
+
+.__inputs {
+  display: flex;
+  color: hsl(0, 0%, 8%);
+  grid-area: input;
+  padding-bottom: 20px;
+  border-bottom: 1px solid hsl(0, 0%, 86%);
+}
+
+.__inputs_container {
+  display: flex;
+  text-align: left;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.__inputs label {
+  margin: 0;
+  font-size: 12px;
+  color: hsl(0, 1%, 44%);
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 5px;
+  letter-spacing: 2px;
+}
+
+.__inputs input {
+  height: 30px;
+  width: 100px;
+  font-size: 30px;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  color: hsl(0, 0%, 8%);
+  border: 1px solid hsl(0, 0%, 86%);
+  font-weight: 600;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.__inputs input::-webkit-outer-spin-button,
+.__inputs input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.__inputs input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.__inputs input:active {
+  border: 1px solid hsl(259, 100%, 65%);
+}
+
+.__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: hsl(0, 0%, 100%);
+  margin: 0 0 0 10px;
+  grid-area: button;
+}
+
+.__button button {
+  height: 80px;
+  width: 80px;
+  padding: 0;
+  border-radius: 50%;
+  background-color: hsl(259, 100%, 65%);
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  bottom: 80px;
+}
+
+.__button button img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.__button button:hover {
+  background-color: hsl(0, 0%, 8%);
+  transition: all 0.3s ease-in-out;
+  border: none;
+}
+
+.__outputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  color: hsl(0, 0%, 8%);
+  grid-area: output;
+  font-size: 64px;
+  font-weight: 800;
+  font-style: italic;
+  text-transform: lowercase;
+}
+
+.__outputs p span {
+  color: hsl(259, 100%, 65%);
+}
+
+.error_label {
+  color: hsl(0, 100%, 67%);
+}
+
+.__inputs .error_input {
+  border: 1px solid hsl(0, 100%, 67%);
+}
+
+@media screen and (max-width: 650px) {
+  .__card {
+    grid-template-areas:
+      "input"
+      "button"
+      "output";
+    
+    width: 300px;
+    padding: 15px;
+    border-radius: 20px 20px 20% 20px;
+  }
+
+  .__inputs {
+    margin: 20px 0;
+    padding-bottom: 40px;
+  }
+
+  .__inputs_container {
+    margin: 10px;
+  }
+
+  .__inputs label {
+    margin-bottom: 5px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  
+  .__inputs input {
+    height: 30px;
+    width: 55px;
+    font-size: 20px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    color: hsl(0, 0%, 8%);
+    border: 1px solid hsl(0, 0%, 86%);
+    font-weight: 600;
+  }
+
+  .__outputs {
+    position: relative;
+    bottom: 30px;
+    font-size: 50px;
+  }
+
+  .__button button {
+    height: 60px;
+    width: 60px;
+    bottom: 50px;
+  }
+
+  .__button button img {
+    width: 30px;
+  }
+}
