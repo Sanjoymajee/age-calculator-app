@@ -30,8 +30,6 @@ export default function Calculator() {
     const day = parseInt(dayElement.value);
     const month = parseInt(monthElement.value);
     const year = parseInt(yearElement.value);
-    if (day < 1 || day > 31 || month < 1 || month > 12 || year < 1) {
-    }
     const birthdate = new Date(year, month - 1, day);
     if (
       birthdate.getDate() !== day ||
@@ -43,7 +41,12 @@ export default function Calculator() {
       return;
     }
     const currentDate = new Date();
-    const timeDiff = Math.abs(currentDate.getTime() - birthdate.getTime());
+    const timeDiff = (currentDate.getTime() - birthdate.getTime());
+    if(timeDiff < 0) {
+      setError(true);
+      setDateError("Must be a valid date");
+      return;
+    }
     const remainingYears = Math.floor(timeDiff / (1000 * 3600 * 24 * 365));
     const remainingMonths = Math.floor(
       (timeDiff / (1000 * 3600 * 24 * 365) - remainingYears) * 12
