@@ -15,7 +15,7 @@ p {
 
 .__error {
   margin-top: 5px;
-  font-size: 12px;
+  font-size: 14px;
   color: hsl(0, 100%, 67%);
 }
 
@@ -35,11 +35,13 @@ p {
 .__card {
   display: grid;
   grid-template-areas:
-    "input button"
-    "output button";
+      "input"
+      "button"
+      "output";
   background-color: hsl(0, 0%, 100%);
   padding: 30px;
   border-radius: 20px 20px 30% 20px;
+  width: 700px;
 }
 
 .__inputs {
@@ -71,7 +73,7 @@ p {
 .__inputs input {
   height: 40px;
   width: 120px;
-  font-size: 30px;
+  font-size: 32px;
   background-color: #fff;
   padding: 15px;
   border-radius: 10px;
@@ -103,6 +105,7 @@ p {
   color: hsl(0, 0%, 100%);
   margin: 0 0 0 10px;
   grid-area: button;
+  height: 50px;
 }
 
 .__button button {
@@ -113,8 +116,8 @@ p {
   background-color: hsl(259, 100%, 65%);
   position: relative;
   transition: all 0.3s ease-in-out;
-  bottom: 110px;
-  right: 20px;
+  bottom: 55%;
+  left: 40%;
 }
 
 .__button button img {
@@ -137,14 +140,23 @@ p {
   align-items: flex-start;
   color: hsl(0, 0%, 8%);
   grid-area: output;
-  font-size: 80px;
+  font-size: 88px;
   font-weight: 800;
   font-style: italic;
   text-transform: lowercase;
+  margin: 25px 0;
+  position: relative;
+  bottom: 20px;
+}
+
+.__outputs p {
+  margin: 0;
+  height: 100px;
 }
 
 .__outputs p span {
   color: hsl(259, 100%, 65%);
+  letter-spacing: 5px;
 }
 
 .error_label {
@@ -156,12 +168,7 @@ p {
 }
 
 @media screen and (max-width: 770px) {
-  .__card {
-    grid-template-areas:
-      "input"
-      "button"
-      "output";
-    
+  .__card {    
     width: 300px;
     padding: 15px;
     border-radius: 20px 20px 20% 20px;
@@ -198,12 +205,18 @@ p {
     position: relative;
     bottom: 30px;
     font-size: 50px;
+    margin: 0;
+  }
+
+  .__outputs p {
+    height: 50px;
   }
 
   .__button button {
     height: 60px;
     width: 60px;
-    bottom: 50px;
+    bottom: 90%;
+    left: 0%;
   }
 
   .__button button img {
