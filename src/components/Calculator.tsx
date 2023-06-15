@@ -42,7 +42,7 @@ export default function Calculator() {
       birthdate.getFullYear() !== year
     ) {
       isError = true;
-      setDateError("Must be a valid date");
+      setDateError("Must be a valid day");
       setIsDateError(true);
     }
     const currentDate = new Date();
@@ -56,6 +56,11 @@ export default function Calculator() {
       isError = true;
       setMonthError("Must be a valid month");
       setIsMonthError(true);
+    }
+    if(day > 31 || day < 1) {
+      isError = true;
+      setDateError("Must be a valid day");
+      setIsDateError(true);
     }
     if (isError) {
       return;
