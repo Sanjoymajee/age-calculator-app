@@ -11,7 +11,6 @@ export default function Calculator() {
   let isError = false;
   const changeAge = () => {
     setAge({ day: -1, month: -1, year: -1 });
-    setError(false);
     setDateError("");
     setMonthError("");
     setYearError("");
@@ -59,7 +58,6 @@ export default function Calculator() {
       setIsMonthError(true);
     }
     if (isError) {
-      setError(true);
       return;
     }
     const remainingYears = Math.floor(timeDiff / (1000 * 3600 * 24 * 365));
@@ -80,7 +78,6 @@ export default function Calculator() {
   };
 
   const disableErrors = () => {
-    setError(false);
     setDateError("");
     setMonthError("");
     setYearError("");
@@ -89,7 +86,6 @@ export default function Calculator() {
     setIsYearError(false);
   };
   const [age, setAge] = useState<Age>({ day: -1, month: -1, year: -1 });
-  const [error, setError] = useState(false);
   const [dateError, setDateError] = useState("");
   const [isDateError, setIsDateError] = useState(false);
   const [monthError, setMonthError] = useState("");
