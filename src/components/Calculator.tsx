@@ -15,12 +15,24 @@ export default function Calculator() {
     setDateError("");
     setMonthError("");
     setYearError("");
+    setIsDateError(false);
+    setIsMonthError(false);
+    setIsYearError(false);
     const dayElement = document.getElementById("day") as HTMLInputElement;
     const monthElement = document.getElementById("month") as HTMLInputElement;
     const yearElement = document.getElementById("year") as HTMLInputElement;
-    if (dayElement.value === "") setDateError("This field is required");
-    if (monthElement.value === "") setMonthError("This field is required");
-    if (yearElement.value === "") setYearError("This field is required");
+    if (dayElement.value === "") {
+      setDateError("This field is required");
+      setIsDateError(true);
+    }
+    if (monthElement.value === "") {
+      setMonthError("This field is required");
+      setIsMonthError(true);
+    }
+    if (yearElement.value === "") {
+      setYearError("This field is required");
+      setIsYearError(true);
+    }
     const day = parseInt(dayElement.value);
     const month = parseInt(monthElement.value);
     const year = parseInt(yearElement.value);
@@ -32,19 +44,22 @@ export default function Calculator() {
     ) {
       isError = true;
       setDateError("Must be a valid date");
+      setIsDateError(true);
     }
     const currentDate = new Date();
     const timeDiff = currentDate.getTime() - birthdate.getTime();
     if (timeDiff < 0) {
       isError = true;
       setYearError("Must be in the past");
+      setIsYearError(true);
     }
     if (month > 12 || month < 1) {
       isError = true;
       setMonthError("Must be a valid month");
+      setIsMonthError(true);
     }
     if (isError) {
-      setError(true)
+      setError(true);
       return;
     }
     const remainingYears = Math.floor(timeDiff / (1000 * 3600 * 24 * 365));
@@ -69,19 +84,25 @@ export default function Calculator() {
     setDateError("");
     setMonthError("");
     setYearError("");
+    setIsDateError(false);
+    setIsMonthError(false);
+    setIsYearError(false);
   };
   const [age, setAge] = useState<Age>({ day: -1, month: -1, year: -1 });
   const [error, setError] = useState(false);
   const [dateError, setDateError] = useState("");
+  const [isDateError, setIsDateError] = useState(false);
   const [monthError, setMonthError] = useState("");
+  const [isMonthError, setIsMonthError] = useState(false);
   const [yearError, setYearError] = useState("");
+  const [isYearError, setIsYearError] = useState(false);
   return (
     <div className="calculator">
       <div className="__card">
         <div className="__inputs">
           <div className="__inputs_container">
             <label htmlFor="day">
-              <p className={error ? "error_label" : ""}>Day</p>
+              <p className={isDateError ? "error_label" : ""}>Day</p>
             </label>
             <input
               type="number"
@@ -91,14 +112,14 @@ export default function Calculator() {
               min={1}
               max={31}
               placeholder="DD"
-              className={error ? "error_input" : ""}
+              className={isDateError ? "error_input" : ""}
               onChange={() => disableErrors()}
             />
             <div className="__error">{dateError}</div>
           </div>
           <div className="__inputs_container">
             <label htmlFor="month">
-              <p className={error ? "error_label" : ""}>Month</p>
+              <p className={isMonthError ? "error_label" : ""}>Month</p>
             </label>
             <input
               type="number"
@@ -108,14 +129,14 @@ export default function Calculator() {
               min={1}
               max={12}
               placeholder="MM"
-              className={error ? "error_input" : ""}
+              className={isMonthError ? "error_input" : ""}
               onChange={() => disableErrors()}
             />
             <div className="__error">{monthError}</div>
           </div>
           <div className="__inputs_container">
             <label htmlFor="year">
-              <p className={error ? "error_label" : ""}>Year</p>
+              <p className={isYearError ? "error_label" : ""}>Year</p>
             </label>
             <input
               type="number"
@@ -124,7 +145,7 @@ export default function Calculator() {
               id="year"
               min={1}
               placeholder="YYYY"
-              className={error ? "error_input" : ""}
+              className={isYearError ? "error_input" : ""}
               onChange={() => disableErrors()}
             />
             <div className="__error">{yearError}</div>
